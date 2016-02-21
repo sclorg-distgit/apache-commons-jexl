@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.1.1
-Release:        9.11%{?dist}
+Release:        9.12%{?dist}
 Summary:        Java Expression Language (JEXL)
 
 License:        ASL 2.0
@@ -16,8 +16,8 @@ Source0:        http://www.apache.org/dist/commons/jexl/source/%{jarname}-%{vers
 Patch0:         001-Fix-tests.patch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-apache-commons-parent >= 26-7
-BuildRequires:  maven30-javacc-maven-plugin
+BuildRequires:  %{?scl_prefix}apache-commons-parent >= 26-7
+BuildRequires:  %{?scl_prefix}javacc-maven-plugin
 
 BuildArch:      noarch
 
@@ -46,7 +46,7 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{jarname}-%{version}-src
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %patch0 -p1 -b .test
 # Java 1.6 contains bsf 3.0, so we don't need the dependency in the pom.xml file
@@ -58,14 +58,14 @@ find -name '*.txt' -exec sed -i 's/\r//' '{}' +
 
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -81,6 +81,9 @@ set -e -x
 
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.1.1-9.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 2.1.1-9.11
 - maven33 rebuild
 
