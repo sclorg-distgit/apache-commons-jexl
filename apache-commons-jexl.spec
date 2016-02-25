@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.1.1
-Release:        9.12%{?dist}
+Release:        9.13%{?dist}
 Summary:        Java Expression Language (JEXL)
 
 License:        ASL 2.0
@@ -15,7 +15,7 @@ Source0:        http://www.apache.org/dist/commons/jexl/source/%{jarname}-%{vers
 # Patch to fix test failure with junit 4.11
 Patch0:         001-Fix-tests.patch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}apache-commons-parent >= 26-7
 BuildRequires:  %{?scl_prefix}javacc-maven-plugin
 
@@ -81,6 +81,9 @@ set -e -x
 
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 2.1.1-9.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.1.1-9.12
 - maven33 rebuild #2
 
