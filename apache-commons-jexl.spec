@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}apache-%{jarname}
 Version:        2.1.1
-Release:        18.1%{?dist}
+Release:        18.2%{?dist}
 Summary:        Java Expression Language (JEXL)
 License:        ASL 2.0
 URL:            http://commons.apache.org/jexl
@@ -94,6 +94,9 @@ echo "
 %doc LICENSE.txt NOTICE.txt
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 2.1.1-18.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 2.1.1-18.1
 - Automated package import and SCL-ization
 
